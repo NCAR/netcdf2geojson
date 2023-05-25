@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>NetCDF to GeoJSON Test</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    
+    <style>
+        body { 
+            margin: 0; padding: 0; 
+        }
+        #map { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            width: 100%; 
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+ 
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGFtbXl6aGFuZyIsImEiOiJjbGd3aWtmYTIwYzdjM3BtdTI1ZHB2dzFoIn0.p02qxsD8C6vO6WdLTwQcug';
+
+    const bounds = [
+    [-360, -40.5], // Southwest coordinates
+    [360, 40.5] // Northeast coordinates
+    ];
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/dark-v11',
+        zoom: 2,
+        center: [0,0],
+        projection: 'equirectangular',
+        // maxBounds: bounds
+    });
+    
+    map.on('load', () => {
+        const layers = map.getStyle().layers;
+        // Find the index of the first symbol layer in the map style.
+        let firstSymbolId;
+        for (const layer of layers) {
+            if (layer.type === 'symbol') {
+                firstSymbolId = layer.id;
+                break;
+            }
+        }
+
+        // Set the default atmosphere style
+        map.setFog({});
+
+        map.addSource('test', {
+            type: 'geojson',
+            // data: 'geojson_data/360x720.geojson'
+            data: 'scripts/test2.geojson'
+            // data: 'geojson_data/720x1440.geojson'
+        });
+
+        map.addLayer({
+            'id': 'test-layer',
+            'type': 'circle',
+            'source': 'test',
+            'paint': {
+                'circle-radius': {
+                    stops: [[3, 3], [16, 40]]
+                },
+                'circle-color': {
+                    property: 'IVT',
+                    stops: [
+                    [0, '#4216ba'],
+                    [860, '#c93870'],
+                    [2000, '#f1f075']
+                    ]
+                },
+                'circle-opacity': {
+                    property: 'IVT',
+                    stops: [[0, 0.4], [2800, 0.8]]
+                }
+            }
+        }, firstSymbolId);
+
+        map.addSource("countries-no-simplification", {
+            type: "vector",
+            url: "mapbox://mapbox.country-boundaries-v1"
+        });
+        map.addLayer({
+            id: "countries-simplification-data",
+            type: "line",
+            source: "countries-no-simplification",
+            "source-layer": "country_boundaries",
+            paint: {
+                'line-color': 'white',
+                'line-width': 0.5,
+                'line-opacity': 0.65
+            }
+        }, firstSymbolId);
+    });
+</script>
+ 
+</body>
+</html>
