@@ -1,0 +1,14 @@
+<PAMDataset>
+  <Subdataset name="IVT">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">2746.9309082031</MDI>
+          <MDI key="STATISTICS_MEAN">130.98187361692</MDI>
+          <MDI key="STATISTICS_MINIMUM">0.19024217128754</MDI>
+          <MDI key="STATISTICS_STDDEV">145.55804161793</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+</PAMDataset>

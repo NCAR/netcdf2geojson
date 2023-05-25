@@ -1,0 +1,50 @@
+<PAMDataset>
+  <Subdataset name="TMQ">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">82.301628112793</MDI>
+          <MDI key="STATISTICS_MEAN">17.172046146805</MDI>
+          <MDI key="STATISTICS_MINIMUM">0.11493183672428</MDI>
+          <MDI key="STATISTICS_STDDEV">9.961119660799</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="time_bnds">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">45.125</MDI>
+          <MDI key="STATISTICS_MEAN">45.0625</MDI>
+          <MDI key="STATISTICS_MINIMUM">45</MDI>
+          <MDI key="STATISTICS_STDDEV">0.0625</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="PRECT">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">1.456928839616e-05</MDI>
+          <MDI key="STATISTICS_MEAN">1.4355907787452e-08</MDI>
+          <MDI key="STATISTICS_MINIMUM">0</MDI>
+          <MDI key="STATISTICS_STDDEV">1.2147094447704e-07</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+  <Subdataset name="IVT">
+    <PAMDataset>
+      <PAMRasterBand band="1">
+        <Metadata>
+          <MDI key="STATISTICS_MAXIMUM">2816.0402832031</MDI>
+          <MDI key="STATISTICS_MEAN">138.34691552413</MDI>
+          <MDI key="STATISTICS_MINIMUM">0.19024217128754</MDI>
+          <MDI key="STATISTICS_STDDEV">96.485488709979</MDI>
+        </Metadata>
+      </PAMRasterBand>
+    </PAMDataset>
+  </Subdataset>
+</PAMDataset>
