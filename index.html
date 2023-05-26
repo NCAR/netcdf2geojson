@@ -28,24 +28,17 @@
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoidGFtbXl6aGFuZyIsImEiOiJjbGd3aWtmYTIwYzdjM3BtdTI1ZHB2dzFoIn0.p02qxsD8C6vO6WdLTwQcug';
 
-    const bounds = [
-    [-360, -40.5], // Southwest coordinates
-    [360, 40.5] // Northeast coordinates
-    ];
-
     const map = new mapboxgl.Map({
         container: 'map',
-        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/dark-v11',
         zoom: 2,
         center: [0,0],
         projection: 'equirectangular',
-        // maxBounds: bounds
     });
     
     map.on('load', () => {
         const layers = map.getStyle().layers;
-        // Find the index of the first symbol layer in the map style.
+
         let firstSymbolId;
         for (const layer of layers) {
             if (layer.type === 'symbol') {
@@ -54,14 +47,11 @@
             }
         }
 
-        // Set the default atmosphere style
         map.setFog({});
 
         map.addSource('test', {
             type: 'geojson',
-            // data: 'geojson_data/360x720.geojson'
-            data: 'scripts/test2.geojson'
-            // data: 'geojson_data/720x1440.geojson'
+            data: 'geojson_data/360x720.geojson'
         });
 
         map.addLayer({
